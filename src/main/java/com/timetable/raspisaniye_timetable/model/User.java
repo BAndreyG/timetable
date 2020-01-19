@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,13 +19,7 @@ public class User extends AbstractBaseEntity {
     @NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "name")
-    protected String name;
-
-    @Column(name = "email")
-    @Email
-    @NotBlank
-    @Size(max = 100)
-    private String email;
+    private String name;
 
     @Column(name = "password")
     @Size(min = 8, max = 250)
@@ -40,8 +35,8 @@ public class User extends AbstractBaseEntity {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    private Vote vote;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Client> client;
 
     public User() {
     }
