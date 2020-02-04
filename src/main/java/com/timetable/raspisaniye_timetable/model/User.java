@@ -42,42 +42,37 @@ public class User extends AbstractBaseEntity {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getRegistered(), u.isEnabled(), u.getRoles(), u.getVote());
+        this(u.getId(), u.getName(), u.getPassword(), u.isEnabled(), u.getRoles());
     }
 
-    public User(Integer id, String name, String email, String password, Date registered, Role role, Role... roles) {
-        this(id, name, email, password, registered, true, EnumSet.of(role, roles), null);
+    public User(Integer id, String name,  String password, Role role, Role... roles) {
+        this(id, name,  password, true, EnumSet.of(role, roles));
     }
 
-    public User(@Size(min = 8, max = 250) String password, boolean enabled, Set<Role> roles, Vote vote) {
+    public User(@Size(min = 8, max = 250) String password, boolean enabled, Set<Role> roles) {
         this.password = password;
-        this.registered = new Date();
         this.enabled = enabled;
         this.roles = roles;
-        this.vote = vote;
+
     }
 
-    public User(Integer id, String name, String email, @Size(min = 8, max = 250) String password, @NotNull Date registered, boolean enabled, Set<Role> roles, Vote vote) {
+   /* public User(Integer id, String name, String email, @Size(min = 8, max = 250) String password, boolean enabled, Set<Role> roles) {
         super(id);
         this.name = name;
-        this.email = email;
         this.password = password;
-        this.registered = registered;
         this.enabled = enabled;
         this.roles = roles;
-        this.vote = vote;
-    }
+    }*/
 
-    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+    public User(Integer id, String name, String password, boolean enabled, Set<Role> roles) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.password = password;
         this.enabled = enabled;
         this.roles = roles;
     }
 
-    public User(Integer integer, String name, String toLowerCase, String password, Vote vote, Role roleUser) {
+    public User(Integer integer, String name, String toLowerCase, String password, Role roleUser) {
     }
 
     public String getName() {
@@ -88,28 +83,12 @@ public class User extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(Date registered) {
-        this.registered = registered;
     }
 
     public boolean isEnabled() {
@@ -128,24 +107,13 @@ public class User extends AbstractBaseEntity {
         this.roles = roles;
     }
 
-    public Vote getVote() {
-        return vote;
-    }
-
-    public void setVote(Vote vote) {
-        this.vote = vote;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", email='" + email + '\'' +
                 ", password=XXX'" +
-                ", registered=" + registered +
                 ", enabled=" + enabled +
                 ", roles=" + roles +
-                ", vote=" + vote +
                 ", id=" + id +
                 '}';
     }
