@@ -1,67 +1,1 @@
-<!--<!DOCTYPE html>-->
-<html lang="ru">
-<head>
-    <!-- Кодировка веб-страницы -->
-    <meta charset="utf-8">
-    <!-- Настройка viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Подключаем Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" >
-    <title>Расписание</title>
-</head>
-<body>
-<div>
- <table border="3" align="centre" class="table table-striped">
-     <caption>
-         <tr align="centre">
-         Расписание Али на неделю
-         </tr>
-     </caption>
-    <thead>
-    <tr>
-        <th>Понедельник</th>
-        <th>Вторник</th>
-        <th>Среда</th>
-        <th>Четверг</th>
-        <th>Пятница</th>
-        <th>Суббота</th>
-        <th>Воскресенье</th>
-    </tr>
-    </thead>
-     <tbody></tbody>
-        <tr>
-            <th> <input type="text" id="datetimepicker"/></th>
-            <th> <input type="text" id="datetimepicker2"/></th>
-            <th> <input type="text" id="datetimepicker3"/></th>
-            <th> <input type="text" id="datetimepicker4"/></th>
-            <th> <input type="text" id="datetimepicker5"/></th>
-            <th> <input type="text" id="datetimepicker6"/></th>
-            <th> <input type="text" id="datetimepicker7"/></th>
-        </tr>
-     </tbody>
- </table>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Подключаем Bootstrap JS -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Подключаем TimePicker -->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.datetimepicker.js"></script>
-
-<script>
-    $('#datetimepicker4').datetimepicker({
-        datepicker:false,
-        format:'HH:mm',
-        locale: 'ru',
-    });
-</script>
-<!--
-&lt;!&ndash; Подключаем плагин Popper &ndash;&gt;
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-&lt;!&ndash; Подключаем Bootstrap JS &ndash;&gt;
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" ></script>
--->
-</body>
-</html>
+<!--<!DOCTYPE html>--><html lang="ru"><head>    <!-- Кодировка веб-страницы -->    <meta charset="utf-8">    <!-- Настройка viewport -->    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    <!-- Подключаем Bootstrap CSS -->    <link rel="stylesheet" href="css/bootstrap.min.css" >    <title>Расписание</title></head><body><div> <table border="3" align="centre" class="table table-striped">     <caption>         <tr align="centre">         Расписание Али на неделю         </tr>     </caption>    <thead>    <tr>        <th>Понедельник</th>        <th>Вторник</th>        <th>Среда</th>        <th>Четверг</th>        <th>Пятница</th>        <th>Суббота</th>        <th>Воскресенье</th>    </tr>    </thead>     <tbody></tbody>        <tr>            <th> <input type="text" id="datetimepicker"/></th>            <th> <input type="text" id="datetimepicker2"/></th>            <th> <input type="text" id="datetimepicker3"/></th>            <th> <input type="text" id="datetimepicker4"/></th>            <th> <input type="text" id="datetimepicker5"/></th>            <th> <input type="text" id="datetimepicker6"/></th>            <th> <input type="text" id="datetimepicker7"/></th>        </tr>     </tbody> </table></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!-- Подключаем Bootstrap JS --><script src="js/bootstrap.min.js"></script><!-- Подключаем TimePicker --><script src="js/jquery.js"></script><script src="js/jquery.datetimepicker.js"></script><script>    $('#datetimepicker4').datetimepicker({        datepicker:false,        format:'HH:mm',  //b        locale: 'ru',    });</script><!--&lt;!&ndash; Подключаем плагин Popper &ndash;&gt;<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>&lt;!&ndash; Подключаем Bootstrap JS &ndash;&gt;<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" ></script>--></body></html>
