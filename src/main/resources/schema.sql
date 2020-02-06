@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS user_roles CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS clients CASCADE;
 DROP TABLE IF EXISTS historys CASCADE;
+DROP TABLE IF EXISTS busytimes CASCADE;
 DROP SEQUENCE IF EXISTS GLOBAL_SEQ CASCADE;
 
 CREATE SEQUENCE global_seq START WITH 100000;
@@ -33,7 +34,7 @@ CREATE TABLE clients
     registered  TIMESTAMP           DEFAULT NOW() NOT NULL,
     tel         INTEGER,
     description VARCHAR,
-    user_id INTEGER NOT NULL
+    user_id     INTEGER                           NOT NULL
 );
 
 CREATE TABLE historys
@@ -44,4 +45,12 @@ CREATE TABLE historys
     description VARCHAR,
     registered  TIMESTAMP           DEFAULT NOW() NOT NULL,
     FOREIGN KEY (client_id) REFERENCES USERS (id) ON DELETE CASCADE
+);
+
+CREATE TABLE busytimes
+(
+    id         INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    registered TIMESTAMP           DEFAULT NOW() NOT NULL,
+    timed      TIME,
+    days       VARCHAR                           NOT NULL
 );

@@ -19,7 +19,11 @@ VALUES ('Манка',10.5,'2015-05-30 10:00:00', 100004,'fsdf',100000),
        ('Гречка',200,'2015-05-30 13:00:00', 100004,'fsdf',100001),
        ('Ужин', 500,'2015-05-30 20:00:00',  100004,'fsdf',100001),
        ('Завтрак', 500,'2015-05-31 10:00:00', 100004,'fsdf',100001),
-       ('Обед', 1000,'2015-05-31 13:00:00',  100003,'fsdf',100001)
+       ('Обед', 1000,'2015-05-31 13:00:00',  100003,'fsdf',100001);
 
 INSERT INTO historys (ID,client_id,name,description,REGISTERED)
 VALUES (100013,100001,'history 1','ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh','2015-05-30 10:00:00');
+
+INSERT INTO busytimes(timed, days)
+VALUES ('20:00','monday'),
+       ('15:00','friday');
