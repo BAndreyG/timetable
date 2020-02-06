@@ -23,17 +23,20 @@ public class RootController {
     @Autowired
     private BusytimeService service;
 
-    @PostMapping
-    public String names(@RequestParam(value="name") String[] nameArray){
-        //TODO
-        System.out.println(nameArray);
-        return nameArray.toString();
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public String seveAll(Model model, HttpServletRequest request) {
+        log.info("saveALL {} POST");
+
+        return "/";
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAll(Model model, HttpServletRequest request) {
-        log.info("getALL {} Busytime");
-        model.addAttribute("busytime",service.getAll());
+    public String getAll(Model model) {
+
+        List<Busytime> list=service.getAll();
+        Busytime bt=list.get(1);
+        model.addAttribute("busytime",bt);//service.getAll()
+        log.info("getALL {} Busytime",bt);
         return "/";
     }
 }
