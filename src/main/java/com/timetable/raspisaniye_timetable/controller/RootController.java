@@ -33,7 +33,7 @@ public class RootController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAll(Model model, HttpServletRequest request) {
         log.info("getALL {} Busytime");
-        model.addAttribute("busytime",);//service.getAll()
-        return "";
+        model.addAttribute("busytime",service.getAll());
+        return "/";
     }
 }
