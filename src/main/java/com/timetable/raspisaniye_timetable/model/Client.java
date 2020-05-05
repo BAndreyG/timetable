@@ -1,12 +1,16 @@
 package com.timetable.raspisaniye_timetable.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.crypto.Data;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
+@Data
 @Entity
 @Table(name="clients")
 public class Client extends AbstractBaseEntity{
@@ -24,9 +28,9 @@ public class Client extends AbstractBaseEntity{
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
     private boolean enabled = true;
 
-    @Column(name = "registered",nullable = false,columnDefinition = "timestamp default now()", insertable = false, updatable =false)
+    @Column(name = "registered",nullable = false,columnDefinition = "timestamp default now()")
     @NotNull
-    private Date registered;
+    private LocalDateTime registered;
 
     @NotBlank
     @Size(min = 2, max = 100)
@@ -38,8 +42,13 @@ public class Client extends AbstractBaseEntity{
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    private User user;
+    /*@ManyToOne
+    private User user;*/
+//    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    @OrderBy("registered ASC")
+    protected List<History> history;
 
+    public Client(){}
 
 }

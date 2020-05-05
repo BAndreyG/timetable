@@ -35,8 +35,8 @@ public class User extends AbstractBaseEntity {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Client> client;
+ /*   @OneToMany(cascade = CascadeType.ALL)
+    private List<Client> client;*/
 
     public User() {
     }

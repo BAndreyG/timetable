@@ -43,5 +43,5 @@ CREATE TABLE historys
     name        VARCHAR(50)                       NOT NULL,
     description VARCHAR,
     registered  TIMESTAMP           DEFAULT NOW() NOT NULL,
-    FOREIGN KEY (client_id) REFERENCES USERS (id) ON DELETE CASCADE
+    FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
 );
