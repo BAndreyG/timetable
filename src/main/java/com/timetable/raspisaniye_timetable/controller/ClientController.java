@@ -1,12 +1,16 @@
 package com.timetable.raspisaniye_timetable.controller;
 
 import com.timetable.raspisaniye_timetable.model.Client;
+import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,12 +26,19 @@ public class ClientController {
     private ClientService service;
 
     @GetMapping("/{id}")
-    public Client getId(@PathVariable int id){return service.getId(id);}
+    public Client getId(@PathVariable int id) {
+        return service.getId(id);
+    }
 
     @GetMapping
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         log.info("get all Client");
         return service.getAll();
     }
 
+    @GetMapping("/history/{clientid}")
+    public List<History> getClientId(@PathVariable int clientid) {
+        List<History> list=service.findAllHistoryByClientId(clientid);
+        return service.findAllHistoryByClientId(clientid);
+    }
 }

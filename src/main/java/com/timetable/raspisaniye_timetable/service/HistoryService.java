@@ -19,8 +19,12 @@ public class HistoryService {
         return repo.findById(id);
     }
 
-    public List<History> getAllClientWeek() {
-        LocalDate[] listDate=WeekDate.getWeekDate(LocalDate.now());
+    public History getClientId(int id){
+        return repo.findById(id);
+    }
+
+    public List<History> getAllClientWeek(LocalDate date) {
+        LocalDate[] listDate=WeekDate.getWeekDate(date);
         List<History> list=repo.findAllByDateBetweenOrderByDate(listDate[0].atStartOfDay(),listDate[1].atStartOfDay());
         return list;
     }

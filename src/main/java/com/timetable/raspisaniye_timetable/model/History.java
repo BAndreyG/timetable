@@ -1,6 +1,8 @@
 package com.timetable.raspisaniye_timetable.model;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -37,5 +39,10 @@ public class History extends AbstractBaseEntity {
     private Client client;
 */
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
+    private Client client;
     public History(){}
 }

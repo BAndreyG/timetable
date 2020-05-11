@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -21,7 +22,24 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String getAllClientWeek(Model model){
-        List<History> list=historyService.getAllClientWeek();
+        List<History> list=historyService.getAllClientWeek(LocalDate.now());
+        model.addAttribute("start",list.get(0).getDate().getHour());
+        model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
+        model.addAttribute("history",list);
+        return "index";
+    }
+
+    @GetMapping(value = "/next")
+    public String getAllClientNextWeek(Model model){
+        List<History> list=historyService.getAllClientWeek(LocalDate.now().plusDays(7));
+        model.addAttribute("start",list.get(0).getDate().getHour());
+        model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
+        model.addAttribute("history",list);
+        return "index";
+    }
+    @GetMapping(value = "/last")
+    public String getAllClientLastWeek(Model model){
+        List<History> list=historyService.getAllClientWeek(LocalDate.now().minusDays(7));
         model.addAttribute("start",list.get(0).getDate().getHour());
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
         model.addAttribute("history",list);

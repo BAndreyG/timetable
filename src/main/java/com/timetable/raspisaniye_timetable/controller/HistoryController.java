@@ -25,4 +25,6 @@ public class HistoryController {
 
     @GetMapping("/{id}")
     public History getHisId(@PathVariable int id){return service.getId(id);}
+
+
 }
