@@ -45,9 +45,10 @@ public class Client extends AbstractBaseEntity{
     /*@ManyToOne
     private User user;*/
 //    @OneToMany(cascade = CascadeType.ALL)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+/*    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name  = "client")
     @OrderBy("registered ASC")
-    protected List<History> history;
+    protected List<History> history;*/
 
     public Client(){}
 

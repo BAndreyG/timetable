@@ -2,8 +2,12 @@ package com.timetable.raspisaniye_timetable.service;
 
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.repo.HistoryRepo;
+import com.timetable.raspisaniye_timetable.util.WeekDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class HistoryService {
@@ -13,5 +17,11 @@ public class HistoryService {
 
     public History getId(int id){
         return repo.findById(id);
+    }
+
+    public List<History> getAllClientWeek() {
+        LocalDate[] listDate=WeekDate.getWeekDate(LocalDate.now());
+        List<History> list=repo.findAllByDateBetweenOrderByDate(listDate[0].atStartOfDay(),listDate[1].atStartOfDay());
+        return list;
     }
 }

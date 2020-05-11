@@ -13,10 +13,14 @@ import java.time.LocalDateTime;
 @Table(name = "historys")
 public class History extends AbstractBaseEntity {
 
-    @NotBlank
+    /*@NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "name")
-    private String name;
+    private String name;*/
+
+    @NotBlank
+    @Column(name = "date")
+    private LocalDateTime date;
 
     @NotBlank
     @Size(min = 2, max = 100)
@@ -27,9 +31,11 @@ public class History extends AbstractBaseEntity {
     @NotNull
     private LocalDateTime registered;
 
+/*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;
+*/
 
     public History(){}
 }

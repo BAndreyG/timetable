@@ -33,14 +33,14 @@ CREATE TABLE clients
     registered  TIMESTAMP           DEFAULT NOW() NOT NULL,
     tel         INTEGER,
     description VARCHAR,
-    user_id INTEGER NOT NULL
+    user_id     INTEGER                           NOT NULL
 );
 
 CREATE TABLE historys
 (
     id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     client_id   INTEGER                           NOT NULL,
-    name        VARCHAR(50)                       NOT NULL,
+    date        TIMESTAMP                         NOT NULL,
     description VARCHAR,
     registered  TIMESTAMP           DEFAULT NOW() NOT NULL,
     FOREIGN KEY (client_id) REFERENCES clients (id) ON DELETE CASCADE
