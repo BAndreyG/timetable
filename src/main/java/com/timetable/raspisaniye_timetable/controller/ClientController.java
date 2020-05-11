@@ -38,7 +38,6 @@ public class ClientController {
 
     @GetMapping("/history/{clientid}")
     public List<History> getClientId(@PathVariable int clientid) {
-        List<History> list=service.findAllHistoryByClientId(clientid);
         return service.findAllHistoryByClientId(clientid);
     }
 }

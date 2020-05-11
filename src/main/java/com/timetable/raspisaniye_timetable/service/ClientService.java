@@ -21,8 +21,8 @@ public class ClientService {
 
     public Client getId(int id){
         if (repo.existsById(id)) {
-            System.out.println(repo.findById(id));
-            return repo.findById(id);
+            System.out.println(repo.getOne(id));
+            return repo.getOne(id);
         }else return null;
     }
 
