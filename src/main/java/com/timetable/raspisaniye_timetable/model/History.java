@@ -44,7 +44,6 @@ public class History extends AbstractBaseEntity {
     @JoinColumn(name = "client_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 //    @JsonIgnore
-    @NotNull
     private Client client;
     public History(){}
 }
