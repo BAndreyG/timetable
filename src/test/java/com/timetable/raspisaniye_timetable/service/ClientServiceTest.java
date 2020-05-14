@@ -20,7 +20,7 @@ class ClientServiceTest {
     }
 
     @Test
-    void deleteNotFound() throws Exception{
+    void NotFound() throws Exception{
         Client client=service.getId(100003);
         assertNotNull(client);
     }
