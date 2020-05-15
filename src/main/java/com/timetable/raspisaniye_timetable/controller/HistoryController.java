@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = HistoryController.REST_URL,produces = MediaType.APPLICATION_JSON_VALUE)
 public class HistoryController {
@@ -19,6 +21,11 @@ public class HistoryController {
     static final String REST_URL = "/history";
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
+    @GetMapping
+    public List<History> getAll() {
+        log.info("get all history");
+        return service.getAll();
+    }
 
     @Autowired
     private HistoryService service;

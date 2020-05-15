@@ -5,11 +5,13 @@ import com.timetable.raspisaniye_timetable.repo.HistoryRepo;
 import com.timetable.raspisaniye_timetable.util.WeekDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@Transactional
 public class HistoryService {
 
     @Autowired
@@ -27,5 +29,9 @@ public class HistoryService {
         LocalDate[] listDate=WeekDate.getWeekDate(date);
         List<History> list=repo.findAllByDateBetweenOrderByDate(listDate[0].atStartOfDay(),listDate[1].atStartOfDay());
         return list;
+    }
+
+    public List<History> getAll() {
+        return repo.findAll();
     }
 }

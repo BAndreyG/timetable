@@ -1,5 +1,6 @@
 package com.timetable.raspisaniye_timetable.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -53,7 +55,8 @@ public class Client extends AbstractBaseEntity {
     @JoinColumn(name  = "client")
     @OrderBy("registered ASC")
     protected List<History> history;*/
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    @OneToMany( mappedBy = "client")
+    @JsonBackReference
 //    @JsonIgnore
     protected List<History> histories;
 

@@ -7,10 +7,12 @@ import com.timetable.raspisaniye_timetable.repo.HistoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ClientService {
 
     @Autowired
@@ -21,8 +23,8 @@ public class ClientService {
 
     public Client getId(int id){
         if (repo.existsById(id)) {
-            System.out.println(repo.getOne(id));
-            return repo.getOne(id);
+            System.out.println(repo.findById(id));
+            return repo.findById(id);
         }else return null;
     }
 

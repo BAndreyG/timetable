@@ -35,9 +35,6 @@ public class User extends AbstractBaseEntity {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
- /*   @OneToMany(cascade = CascadeType.ALL)
-    private List<Client> client;*/
-
     public User() {
     }
 
@@ -55,14 +52,6 @@ public class User extends AbstractBaseEntity {
         this.roles = roles;
 
     }
-
-   /* public User(Integer id, String name, String email, @Size(min = 8, max = 250) String password, boolean enabled, Set<Role> roles) {
-        super(id);
-        this.name = name;
-        this.password = password;
-        this.enabled = enabled;
-        this.roles = roles;
-    }*/
 
     public User(Integer id, String name, String password, boolean enabled, Set<Role> roles) {
         this.id = id;
