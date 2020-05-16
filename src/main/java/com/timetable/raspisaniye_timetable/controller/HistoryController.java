@@ -18,6 +18,9 @@ import java.util.List;
 @RequestMapping(value = HistoryController.REST_URL,produces = MediaType.APPLICATION_JSON_VALUE)
 public class HistoryController {
 
+    @Autowired
+    private HistoryService service;
+
     static final String REST_URL = "/history";
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -27,11 +30,11 @@ public class HistoryController {
         return service.getAll();
     }
 
-    @Autowired
-    private HistoryService service;
-
     @GetMapping("/{id}")
     public History getHisId(@PathVariable int id){return service.getId(id);}
 
-
+    @GetMapping("/client/{clientid}")
+    public List<History> getClientId(@PathVariable int clientid) {
+        return service.findAllHistoryByClientId(clientid);
+    }
 }

@@ -18,9 +18,6 @@ public class ClientService {
     @Autowired
     private ClientRepo repo;
 
-    @Autowired
-    private HistoryRepo historyRepo;
-
     public Client getId(int id){
         if (repo.existsById(id)) {
             System.out.println(repo.findById(id));
@@ -32,7 +29,4 @@ public class ClientService {
         return repo.findAll(Sort.by("name"));
     }
 
-    public List<History> findAllHistoryByClientId(int clientid) {
-        return historyRepo.findAllHistoryByClientId(clientid);
-    }
 }

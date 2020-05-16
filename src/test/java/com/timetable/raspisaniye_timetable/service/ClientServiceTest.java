@@ -1,27 +1,45 @@
 package com.timetable.raspisaniye_timetable.service;
 
 import com.timetable.raspisaniye_timetable.model.Client;
-import javassist.NotFoundException;
+import com.timetable.raspisaniye_timetable.repo.ClientRepo;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Sort;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.List;
 
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class ClientServiceTest {
 
     @Autowired
-    protected ClientService service;
+    private ClientService service;
+
+    @MockBean
+    private ClientRepo repo;
 
     @Test
     void getId() {
-        Client result=new Client();
-//        assertThrows();
+        Client result = service.getId(100003);
+        Client clientNull = service.getId(1);
+        Mockito.verify(repo, Mockito.times(1)).existsById(100003);
+        Mockito.verify(repo, Mockito.times(1)).existsById(1);
+        Mockito.doReturn(new Client())
+                .when(repo)
+                .findById(100003);
+//        Mockito.verify(repo, Mockito.times(1)).findById(100003);
+//        Mockito.verify(repo, Mockito.times(2)).existsById(100003);
     }
 
     @Test
-    void NotFound() throws Exception{
-//        Client client=service.getId(100003);
-//        assertNotNull(client);
+    void getAll() {
+        List<Client> result = service.getAll();
+        Mockito.verify(repo, Mockito.times(1)).findAll(Sort.by("name"));
     }
 }

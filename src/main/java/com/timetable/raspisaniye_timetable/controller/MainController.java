@@ -4,8 +4,11 @@ import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.ClientService;
 import com.timetable.raspisaniye_timetable.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
@@ -44,5 +47,10 @@ public class MainController {
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
         model.addAttribute("history",list);
         return "index";
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public final ResponseEntity<Exception> handleAllExceptions(RuntimeException ex) {
+        return new ResponseEntity<Exception>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -34,4 +34,8 @@ public class HistoryService {
     public List<History> getAll() {
         return repo.findAll();
     }
+
+    public List<History> findAllHistoryByClientId(int clientid) {
+        return repo.findAllHistoryByClientId(clientid);
+    }
 }

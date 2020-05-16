@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
+@Transactional
 public class RaspisaniyeTimetableApplicationTests {
 
 	@Autowired
@@ -33,16 +35,6 @@ public class RaspisaniyeTimetableApplicationTests {
 
 	@Test
 	void contextLoads() {
-
-	}
-
-	@Test
-	public void testMainController () throws Exception{
-		this.mockMvc.perform(MockMvcRequestBuilders
-				.get("/")
-				.accept(MediaType.APPLICATION_JSON_VALUE))
-				.andDo(print())
-				.andExpect(status().isOk());
 
 	}
 

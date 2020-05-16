@@ -21,7 +21,6 @@ public class ClientController {
     static final String REST_URL = "/client";
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-
     @Autowired
     private ClientService service;
 
@@ -36,10 +35,5 @@ public class ClientController {
     public List<Client> getAll() {
         log.info("get all Client");
         return service.getAll();
-    }
-
-    @GetMapping("/history/{clientid}")
-    public List<History> getClientId(@PathVariable int clientid) {
-        return service.findAllHistoryByClientId(clientid);
     }
 }
