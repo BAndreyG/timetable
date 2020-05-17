@@ -17,13 +17,15 @@ public class HistoryService {
     @Autowired
     private HistoryRepo repo;
 
-    public History getId(int id){
-        return repo.findById(id);
+    public History getId(int id)
+    {
+        if (repo.existsById(id)) return repo.findById(id);
+        else return null;
     }
 
-    public History getClientId(int id){
-        return repo.findById(id);
-    }
+//    public History getClientId(int id){
+//        return repo.findById(id);
+//    }
 
     public List<History> getAllClientWeek(LocalDate date) {
         LocalDate[] listDate=WeekDate.getWeekDate(date);

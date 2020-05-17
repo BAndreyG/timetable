@@ -3,6 +3,7 @@ package com.timetable.raspisaniye_timetable.controller;
 import com.timetable.raspisaniye_timetable.model.Client;
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.ClientService;
+import com.timetable.raspisaniye_timetable.to.ClientTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class ClientController {
     private ClientService service;
 
     @GetMapping("/{id}")
-    public Client getId(@PathVariable int id) {
-        Client c=service.getId(id);
+    public ClientTo getId(@PathVariable int id) {
+        ClientTo c=service.getId(id);
         System.out.println(c.toString());
         return c;
     }
