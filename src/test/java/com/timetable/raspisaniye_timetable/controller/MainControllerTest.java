@@ -2,6 +2,7 @@ package com.timetable.raspisaniye_timetable.controller;
 
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.HistoryService;
+import org.hibernate.LazyInitializationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ class MainControllerTest {
 
     @Test
     void getAllClientWeek() throws Exception{
+        //TODO https://overcoder.net/q/49514/junit-5-%D0%BA%D0%B0%D0%BA-%D1%83%D1%82%D0%B2%D0%B5%D1%80%D0%B6%D0%B4%D0%B0%D1%82%D1%8C-%D0%B8%D1%81%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B1%D1%80%D0%BE%D1%88%D0%B5%D0%BD%D0%BE
+        //TODO перехват ожидаемой ошибки
         this.mockMvc.perform(MockMvcRequestBuilders
                     .get("/")
                     .accept(MediaType.APPLICATION_JSON_VALUE))

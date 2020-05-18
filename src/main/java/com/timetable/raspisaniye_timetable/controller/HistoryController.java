@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,12 @@ public class HistoryController {
     public List<History> getAll() {
         log.info("get all history");
         return service.getAll();
+    }
+
+    @GetMapping("/test")
+    public List<History> getAllWeek() {
+        log.info("get all history on this week");
+        return service.getAllClientWeek(LocalDate.now());
     }
 
     @GetMapping("/{id}")
