@@ -32,7 +32,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping(value = "/next")
+    @GetMapping(value = "/nextWeek")
     public String getAllClientNextWeek(Model model){
         List<History> list=historyService.getAllClientWeek(LocalDate.now().plusDays(7));
         model.addAttribute("start",list.get(0).getDate().getHour());
@@ -40,7 +40,7 @@ public class MainController {
         model.addAttribute("history",list);
         return "index";
     }
-    @GetMapping(value = "/last")
+    @GetMapping(value = "/lastWeek")
     public String getAllClientLastWeek(Model model){
         List<History> list=historyService.getAllClientWeek(LocalDate.now().minusDays(7));
         model.addAttribute("start",list.get(0).getDate().getHour());
