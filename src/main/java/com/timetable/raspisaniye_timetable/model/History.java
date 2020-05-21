@@ -1,9 +1,11 @@
 package com.timetable.raspisaniye_timetable.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "historys")
 @EqualsAndHashCode(callSuper = false)
 public class History extends AbstractBaseEntity {
@@ -30,6 +33,7 @@ public class History extends AbstractBaseEntity {
 
     @Column(name = "registered",nullable = false,columnDefinition = "timestamp default now()")
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime registered;
 
 /*
@@ -44,6 +48,4 @@ public class History extends AbstractBaseEntity {
     @JsonManagedReference
 //    @JsonIgnore
     private Client client;
-
-    public History(){}
 }

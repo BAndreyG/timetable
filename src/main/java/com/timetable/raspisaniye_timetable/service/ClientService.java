@@ -30,4 +30,8 @@ public class ClientService {
         return repo.findAll(Sort.by("name"));
     }
 
+    public Client save(Client client) {
+        // TODO реализовать
+        return repo.save(client);
+    }
 }

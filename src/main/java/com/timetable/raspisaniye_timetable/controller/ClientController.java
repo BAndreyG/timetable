@@ -6,12 +6,10 @@ import com.timetable.raspisaniye_timetable.service.ClientService;
 import com.timetable.raspisaniye_timetable.to.ClientTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,14 +25,24 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ClientTo getId(@PathVariable int id) {
-        ClientTo c=service.getId(id);
-        System.out.println(c.toString());
-        return c;
+        log.info("get Client by id"+id);
+        return service.getId(id);
     }
 
     @GetMapping
     public List<Client> getAll() {
         log.info("get all Client");
         return service.getAll();
+    }
+
+    @PostMapping
+    public Client create(@RequestBody Client client){
+        return service.save(client);
+    }
+
+    @PutMapping
+    public Client update(@PathVariable("id") Client clientToDb,@RequestBody Client client){
+        BeanUtils.copyProperties(client,clientToDb,"id");
+        return service.save(clientToDb);
     }
 }

@@ -1,8 +1,10 @@
 package com.timetable.raspisaniye_timetable.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,6 +17,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "clients")
+@NoArgsConstructor
 public class Client extends AbstractBaseEntity {
 
     @NotBlank
@@ -28,11 +31,11 @@ public class Client extends AbstractBaseEntity {
     private String adres;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
-
     private boolean enabled = true;
-    @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
 
+    @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime registered;
 
     @NotBlank
@@ -59,8 +62,5 @@ public class Client extends AbstractBaseEntity {
     @JsonBackReference
 //    @JsonIgnore
     protected List<History> histories;
-
-    public Client() {
-    }
 
 }
