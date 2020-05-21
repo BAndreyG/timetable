@@ -8,7 +8,7 @@ Vue.component('message-row',{
 //     template:'<div>'+
 //     '<span v-for="n in 16" :key="n">{{ n+7 }}:00 </span>'+
 // '</div>'
-   template: '<div id="2">' +
+   template: '<tbody id="1">' +
        '<tr v-for="n in 16" :key="n">' +
        '<td>{{ n+7 }}:00 </td>'+
        '<td><input type="text" value="{{message.client.name}}"></td>' +
@@ -16,12 +16,14 @@ Vue.component('message-row',{
        '<td><input type="text"></td>' +
        '<td><input type="text"></td>' +
        '<td><input type="text"></td>' +
+       '<td><input type="text"></td>' +
+       '<td><input type="text"></td>' +
        '</tr>' +
-       '</div>'
+       '</tbody>'
 });
-Vue.component('messages-list', {
+Vue.component('clients-list', {
     props:['mes'],
-    template: '<div id="1"><message-row v-for="message in mes"  :key="message.id"  :message="message" /></div>',
+    template: '<message-row v-for="message in mes"  :key="message.id"  :message="message" />',
     created:function(){
         messageApiMain.get().then(result=>
             result.json().then(
@@ -34,6 +36,6 @@ Vue.component('messages-list', {
 var app = new Vue({
     el: '#tableBody',
     // el: '#app',
-    template: '<messages-list :mes="messages" />',
-    data: {messages: []}
+    template: '<clients-list :mes="clientsWeek" />',
+    data: {clientsWeek: []}
 });
