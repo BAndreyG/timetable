@@ -30,6 +30,7 @@ public class HistoryService {
     public List<History> getAllClientWeek(LocalDate date) {
         LocalDate[] listDate=WeekDate.getWeekDate(date);
         List<History> list=repo.findAllByDateBetweenOrderByDate(listDate[0].atStartOfDay(),listDate[1].atStartOfDay());
+
         return list;
     }
 
