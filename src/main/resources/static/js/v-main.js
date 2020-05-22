@@ -3,29 +3,34 @@ var messageApiClient=Vue.resource('/client/{id}');
 var messageApiMain=Vue.resource('/history/test');
 
 Vue.component('td-row',{
-    props:['cli'],
+    props:['clientWeek'],
+    // template:'<div>{{clientWeek}}</div>'
    template: '<tbody>' +
        '<template v-for="n in 16">'+
-       '<tr v-if="cli.time==18">' +
+    '<template v-for="cli in clientWeek"  >' +
+       // '<template v-for="cli in clientWeek" />'+
+       '<tr v-if="cli.time==n+7">' +
        '<td>{{ n+7 }}:00 </td>'+
-       '<td id="monday" :value="cli.clientName">{{cli.clientName}}</td>' +
-       '<td id="tuesday">{{cli.day}}</td>' +
+       '<td id="monday" :value="cli.clientName"></td>' +
+       '<td id="tuesday"></td>' +
        '<td id="wednesday">if</td>' +
        '<td id="thursday"></td>' +
-       '<td id="friday"></td>' +
+       '<td v-if="cli.day==friday" id="friday">cli.clientName</td>' +
+       '<td v-else id="friday">{{cli.day}}</td>' +
        '<td id="saturday"></td>' +
        '<td id="sunday"></td>' +
        '</tr>' +
        '<tr v-else>' +
        '<td>{{ n+7 }}:00 </td>'+
        '<td id="monday" :value="cli.clientName"></td>' +
-       '<td id="tuesday">{{cli.day}}</td>' +
+       '<td id="tuesday"></td>' +
        '<td id="wednesday">else</td>' +
        '<td id="thursday"></td>' +
        '<td id="friday"></td>' +
        '<td id="saturday"></td>' +
        '<td id="sunday"></td>' +
        '</tr>' +
+       '</template>'+
        '</template>'+
        '</tbody>'
 });
@@ -45,13 +50,14 @@ var app = new Vue({
             '<th>Воскресенье</th>'+
         '</tr>'+
         '</thead>'+
-        '<td-row v-for="cli in clientWeek"  :key="cli.id"  :cli="cli" />'+
+        '<td-row :clientWeek="clientWeek" />'+
+// '<td-row v-for="n in 16" :key="n" :n="n" />'+
         '</table>',
     data:{clientWeek:[]},
     created:function(){
         messageApiMain.get().then(result=>
             result.json().then(
-                data=>data.forEach(cli=>this.clientWeek.push(cli))
+                data=>data.forEach(c=>this.clientWeek.push(c))
             )
         )
     }
