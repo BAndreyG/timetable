@@ -3,3 +3,14 @@
     top: 100px;
     height: 100px;
 }
+table{
+    width: 100%;
+    table-layout: initial;
+}
+.menu{
+    padding-bottom: 60px;
+}
+/*
+input{
+    width:50px;
+}*/

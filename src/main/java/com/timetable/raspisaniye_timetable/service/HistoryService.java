@@ -2,12 +2,16 @@ package com.timetable.raspisaniye_timetable.service;
 
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.repo.HistoryRepo;
+import com.timetable.raspisaniye_timetable.to.HistoryTo;
+import com.timetable.raspisaniye_timetable.util.HistoryUtil;
 import com.timetable.raspisaniye_timetable.util.WeekDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -27,11 +31,12 @@ public class HistoryService {
 //        return repo.findById(id);
 //    }
 
-    public List<History> getAllClientWeek(LocalDate date) {
+    public List<HistoryTo> getAllClientWeek(LocalDate date) {
         LocalDate[] listDate=WeekDate.getWeekDate(date);
         List<History> list=repo.findAllByDateBetweenOrderByDate(listDate[0].atStartOfDay(),listDate[1].atStartOfDay());
-
-        return list;
+        List<HistoryTo> lsitTo=new ArrayList<>();
+        list.stream().forEach((h)->lsitTo.add(HistoryUtil.toHistoryTo(h,new HistoryTo())));
+        return lsitTo;
     }
 
     public List<History> getAll() {

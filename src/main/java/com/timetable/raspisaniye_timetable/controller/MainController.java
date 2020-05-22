@@ -3,6 +3,7 @@ package com.timetable.raspisaniye_timetable.controller;
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.ClientService;
 import com.timetable.raspisaniye_timetable.service.HistoryService;
+import com.timetable.raspisaniye_timetable.to.HistoryTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String getAllClientWeek(Model model){
-        List<History> list=historyService.getAllClientWeek(LocalDate.now());
+        List<HistoryTo> list=historyService.getAllClientWeek(LocalDate.now());
         model.addAttribute("start",list.get(0).getDate().getHour());
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
         model.addAttribute("history",list);
@@ -34,7 +35,7 @@ public class MainController {
 
     @GetMapping(value = "/nextWeek")
     public String getAllClientNextWeek(Model model){
-        List<History> list=historyService.getAllClientWeek(LocalDate.now().plusDays(7));
+        List<HistoryTo> list=historyService.getAllClientWeek(LocalDate.now().plusDays(7));
         model.addAttribute("start",list.get(0).getDate().getHour());
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
         model.addAttribute("history",list);
@@ -42,7 +43,7 @@ public class MainController {
     }
     @GetMapping(value = "/lastWeek")
     public String getAllClientLastWeek(Model model){
-        List<History> list=historyService.getAllClientWeek(LocalDate.now().minusDays(7));
+        List<HistoryTo> list=historyService.getAllClientWeek(LocalDate.now().minusDays(7));
         model.addAttribute("start",list.get(0).getDate().getHour());
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
         model.addAttribute("history",list);

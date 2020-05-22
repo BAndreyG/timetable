@@ -2,6 +2,7 @@ package com.timetable.raspisaniye_timetable.controller;
 
 import com.timetable.raspisaniye_timetable.model.History;
 import com.timetable.raspisaniye_timetable.service.HistoryService;
+import com.timetable.raspisaniye_timetable.to.HistoryTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class HistoryController {
     }
 
     @GetMapping("/test")
-    public List<History> getAllWeek() {
+    public List<HistoryTo> getAllWeek() {
         log.info("get all history on this week");
         return service.getAllClientWeek(LocalDate.now());
     }

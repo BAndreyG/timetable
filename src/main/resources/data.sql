@@ -26,6 +26,6 @@ VALUES ('Первый', 'st1', 12345, 'fsdf', 100001),
        ('Пятый', 'st5', 45789, 'fsdf', 100001);
 
 INSERT INTO historys (client_id, date, description)
-VALUES (100003,'2020-05-11 12:00:00' , 'ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh'),
-       (100003,'2020-05-15 16:00:00', 'ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh'),
+VALUES (100003,'2020-05-22 12:00:00' , 'ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh'),
+       (100003,'2020-05-19 16:00:00', 'ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh'),
        (100005, '2020-05-18 18:00:00', 'ksjadkasdhkahdkjhaskdhaskjdhkjashdkjahskdhadh');
