@@ -35,7 +35,7 @@ public class HistoryController {
     @GetMapping("/test")
     public List<HistoryTo> getAllWeek() {
         log.info("get all history on this week");
-        return service.getAllClientWeek(LocalDate.now());
+        return service.getAllClientWeek(LocalDate.now().minusDays(7));
     }
 
     @GetMapping("/{id}")
