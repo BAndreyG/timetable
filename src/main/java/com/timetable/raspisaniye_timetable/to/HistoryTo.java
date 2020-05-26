@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class HistoryTo {
     private LocalDateTime date;
-    private String day;
+    private int day;
     private String time;
     private String clientName;
     private int clientId;

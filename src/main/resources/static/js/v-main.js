@@ -11,14 +11,16 @@ Vue.component('td-row',{
        // '<template v-for="cli in clientWeek" />'+
        '<tr v-if="cli.time==n+7">' +
        '<td>{{ n+7 }}:00 </td>'+
-       '<td class="monday" :value="cli.clientName"></td>' +
-       '<td v-if=checkDay(cli.day,2) class="tuesday"></td>' +
-       '<td v-else class="tuesday">фига</td>' +
+       '<td class="monday" v-if="cli.day==1">{{cli.clientName}}</td>' +
+       '<td class="monday" v-else></td>' +
+       // '<td class="tuesday" v-if=checkDay(cli.day,"tuesday") ></td>' +
+       '<td class="tuesday" v-if="cli.day==2">{{cli.clientName}}</td>' +
+       '<td v-else class="tuesday"></td>' +
        '<td class="wednesday">if</td>' +
        '<td class="cli.day"></td>' +
-       '<td v-if="cli.day==5" class="5">cli.clientName</td>' +
+       '<td v-if="cli.day==5" class="5">{{cli.clientName}}</td>' +
        '<td v-else class="friday">{{cli.day}}</td>' +
-       '<td class="saturday">{{fr}}</td>' +
+       '<td class="saturday"></td>' +
        '<td class="sunday"></td>' +
        '</tr>' +
        '<tr v-else>' +
@@ -36,7 +38,8 @@ Vue.component('td-row',{
        '</tbody>',
     methods: {
         checkDay:function(a,b){
-            console.log(a,b);
+            if (a==b)console.log(a,b);
+            // console.log(this);
             return true;
         }
     }
