@@ -11,17 +11,20 @@ Vue.component('td-row',{
        // '<template v-for="cli in clientWeek" />'+
        '<tr v-if="cli.time==n+7">' +
        '<td>{{ n+7 }}:00 </td>'+
-       '<td class="monday" v-if="cli.day==1">{{cli.clientName}}</td>' +
-       '<td class="monday" v-else></td>' +
-       // '<td class="tuesday" v-if=checkDay(cli.day,"tuesday") ></td>' +
-       '<td class="tuesday" v-if="cli.day==2">{{cli.clientName}}</td>' +
+       '<td v-if="cli.day==1" class="monday">{{cli.clientName}}</td>' +
+       '<td v-else class="monday"></td>' +
+       '<td v-if="cli.day==2" class="tuesday">{{cli.clientName}}</td>' +
        '<td v-else class="tuesday"></td>' +
-       '<td class="wednesday">if</td>' +
-       '<td class="cli.day"></td>' +
+       '<td v-if="cli.day==3" class="wednesday">{{cli.clientName}}</td>' +
+       '<td v-else class="cli.day"></td>' +
+       '<td v-if="cli.day==4" class="thursday">{{cli.clientName}}</td>' +
+       '<td v-else class="cli.day"></td>' +
        '<td v-if="cli.day==5" class="5">{{cli.clientName}}</td>' +
        '<td v-else class="friday">{{cli.day}}</td>' +
-       '<td class="saturday"></td>' +
-       '<td class="sunday"></td>' +
+       '<td v-if="cli.day==6" class="saturday">{{cli.clientName}}</td>' +
+       '<td v-else class="saturday"></td>' +
+       '<td v-if="cli.day==7" class="sunday">{{cli.clientName}}</td>' +
+       '<td v-else class="sunday"></td>' +
        '</tr>' +
        '<tr v-else>' +
        '<td>{{ n+7 }}:00 </td>'+

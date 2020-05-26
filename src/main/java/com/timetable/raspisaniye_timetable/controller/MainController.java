@@ -26,7 +26,7 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String getAllClientWeek(Model model){
-        List<HistoryTo> list=historyService.getAllClientWeek(LocalDate.now().minusDays(7));
+        List<HistoryTo> list=historyService.getAllClientWeek(LocalDate.now());
         if (list.size()<1) System.out.println("history null");
         model.addAttribute("start",list.get(0).getDate().getHour());
         model.addAttribute("end",list.get(list.size()-1).getDate().getHour());
