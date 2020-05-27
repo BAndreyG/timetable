@@ -7,9 +7,7 @@ Vue.component('td-row',{
     // template:'<div>{{clientWeek}}</div>'
    template: '<tbody>' +
        '<template v-for="n in 16">'+
-    '<template v-for="cli in clientWeek"  >' +
-       // '<template v-for="cli in clientWeek" />'+
-       '<tr v-if="cli.time==n+7">' +
+      /* '<tr v-if="cli.time==n+7">' +
        '<td>{{ n+7 }}:00 </td>'+
        '<td v-if="cli.day==1" class="monday">{{cli.clientName}}</td>' +
        '<td v-else class="monday"></td>' +
@@ -25,18 +23,18 @@ Vue.component('td-row',{
        '<td v-else class="saturday"></td>' +
        '<td v-if="cli.day==7" class="sunday">{{cli.clientName}}</td>' +
        '<td v-else class="sunday"></td>' +
-       '</tr>' +
-       '<tr v-else>' +
+       '</tr>' +*/
+       // '<tr v-else>' +
+       '<tr>' +
        '<td>{{ n+7 }}:00 </td>'+
-       '<td class="monday" :value="cli.clientName"></td>' +
-       '<td class="tuesday"></td>' +
-       '<td class="wednesday">else</td>' +
-       '<td class="thursday"></td>' +
-       '<td class="friday"></td>' +
-       '<td class="saturday"></td>' +
-       '<td class="sunday"></td>' +
+       '<td class="monday" :time="n+7"></td>' +
+       '<td class="tuesday" :time="n+7"></td>' +
+       '<td class="wednesday" :time="n+7">else</td>' +
+       '<td class="thursday" :time="n+7"></td>' +
+       '<td class="friday" :time="n+7"></td>' +
+       '<td class="saturday" :time="n+7"></td>' +
+       '<td class="sunday" :time="n+7" v-if="checkDay"></td>' +
        '</tr>' +
-       '</template>'+
        '</template>'+
        '</tbody>',
     methods: {
@@ -45,7 +43,11 @@ Vue.component('td-row',{
             // console.log(this);
             return true;
         }
-    }
+    },
+    // render: function(){
+    //     // '<template v-for="cli in clientWeek"  >' +
+    //     // '</template>'
+    // }
 });
 
 var app = new Vue({
