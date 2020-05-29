@@ -2,6 +2,7 @@ var messageApiHistiry=Vue.resource('/history/{id}');
 var messageApiClient=Vue.resource('/client/{id}');
 var messageApiMain=Vue.resource('/history/test');
 
+//TODO https://webdevblog.ru/vvedenie-v-funkciju-vizualizacii-vue-s-primerami/
 Vue.component('td-row',{
     props:['clientWeek'],
     // template:'<div>{{clientWeek}}</div>'
@@ -44,6 +45,9 @@ Vue.component('td-row',{
             return true;
         }
     },
+    render(createElement) {
+        return createElement('h1', 'Hello world '+clientWeek);
+    }
     // render: function(){
     //     // '<template v-for="cli in clientWeek"  >' +
     //     // '</template>'
