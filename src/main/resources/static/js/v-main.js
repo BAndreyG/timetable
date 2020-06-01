@@ -6,7 +6,7 @@ var messageApiMain=Vue.resource('/history/test');
 Vue.component('td-row',{
     props:['clientWeek'],
     // template:'<div>{{clientWeek}}</div>'
-   template: '<tbody>' +
+   template: '<tbody id="tbody">' +
        '<template v-for="n in 16">'+
       /* '<tr v-if="cli.time==n+7">' +
        '<td>{{ n+7 }}:00 </td>'+
@@ -28,30 +28,43 @@ Vue.component('td-row',{
        // '<tr v-else>' +
        '<tr>' +
        '<td>{{ n+7 }}:00 </td>'+
-       '<td class="monday" :time="n+7"></td>' +
+       '<td v-if="checkDay()" class="monday" :time="n+7">if</td>' +
+       '<td v-else class="monday" :time="n+7">else</td>' +
        '<td class="tuesday" :time="n+7"></td>' +
        '<td class="wednesday" :time="n+7">else</td>' +
        '<td class="thursday" :time="n+7"></td>' +
        '<td class="friday" :time="n+7"></td>' +
        '<td class="saturday" :time="n+7"></td>' +
-       '<td class="sunday" :time="n+7" v-if="checkDay"></td>' +
+       '<td class="sunday" :time="n+7" ></td>' +
        '</tr>' +
        '</template>'+
        '</tbody>',
-    methods: {
-        checkDay:function(a,b){
-            if (a==b)console.log(a,b);
-            // console.log(this);
-            return true;
-        }
+    created:function(){
+      console.log('created');
+        e=document.getElementById("tbody");
+        f=this.clientWeek;
+        console.log(this.clientWeek);
+        console.log(e.childNodes);
     },
-    render(createElement) {
-        return createElement('h1', 'Hello world '+clientWeek);
+    methods: {
+        checkDay:function(){
+            if (this.clientWeek.length>0){
+                e=document.getElementById("tbody");
+                if (e!=null){
+                    i=0;
+                    list=this.clientWeek;
+                    for (let j = 0; j < e.childElementCount; j++) {
+                        e.childNodes.forEach((value, key) => )
+                        // if ()
+                    };
+
+                    // console.log(this.clientWeek);
+                    // console.log(e.childNodes);
+                }
+            }
+            console.log("call chackday");
+        }
     }
-    // render: function(){
-    //     // '<template v-for="cli in clientWeek"  >' +
-    //     // '</template>'
-    // }
 });
 
 var app = new Vue({
